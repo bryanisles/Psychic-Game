@@ -90,10 +90,7 @@ document.onkeyup = function(event) {
 		 
 		if (userGuess == compSelect) {
 			myWin++;
-			document.getElementById("myWins").innerHTML = myWin;
-			document.getElementById("myLosses").innerHTML = myLose;
 			myLives = 10;
-			document.getElementById("myLives").innerHTML = myLives;
 			document.getElementById("myGuesses").innerHTML = tempStr.split("").join(", ");
 			tempStr="";
 			document.getElementById("myHint").style.display = "none";
@@ -102,17 +99,13 @@ document.onkeyup = function(event) {
 			document.getElementById("myTemp").innerHTML = "";
 		} else {
 			myLives--;
-			document.getElementById("myLives").innerHTML = myLives;
 			document.getElementById("myGuesses").innerHTML = tempStr.split("").join(", ");
 		}
 	}
 	
 	if(myLives == 0) {
 		myLose++;
-		document.getElementById("myLosses").innerHTML = myLose;
-		document.getElementById("myWins").innerHTML	= myWin;
 		myLives = 10;
-		document.getElementById("myLives").innerHTML = myLives;
 		document.getElementById("myGuesses").innerHTML = tempStr.split("").join(", ");
 		tempStr="";
 		document.getElementById("myHint").style.display = "none";
@@ -120,6 +113,11 @@ document.onkeyup = function(event) {
 		compSelect = myAlpha[myRnd];
 		document.getElementById("myTemp").innerHTML = "";
 	}
+
+	document.getElementById("myWins").innerHTML = myWin;
+	document.getElementById("myLosses").innerHTML = myLose;
+	document.getElementById("myLives").innerHTML = myLives;
+
 }
 // ------------------------------------------------------------------------------------------
 // ==========================================================================================
