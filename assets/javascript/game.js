@@ -1,12 +1,42 @@
+// ==========================================================================================
+// "Global Variables"
+// ------------------------------------------------------------------------------------------
 var myAlpha = "abcdefghijklmnopqrstuvwxyz";
 var myRnd = Math.floor(Math.random()*myAlpha.length);
 var compSelect = myAlpha[myRnd];
 var tempStr = "";
-var displayTempStr = "";
 var myWin = 0;
 var myLose = 0;
 var myLives = 10;
+// ------------------------------------------------------------------------------------------
+// ==========================================================================================
 
+
+// ==========================================================================================
+// "Hint Function"
+// Summary: A function that provides the user an option of help, which is used as an onclick
+//   event
+// ------------------------------------------------------------------------------------------
+var myHintFunc = function() {
+	if(document.getElementById("myHint").style.display == "none"){
+		document.getElementById("myHint").style.display = "block";
+		if (myLives > 5) {
+			myLives = 5;
+			document.getElementById("myLives").innerHTML = myLives;
+		}	
+	} else {
+		document.getElementById("myHint").style.display = "none";
+	}
+}
+// ------------------------------------------------------------------------------------------
+// ==========================================================================================
+
+
+// ==========================================================================================
+// "Hot-Cold Function"
+// Summary: A function that provides the user input on distance from current selection to
+//   that of the randomly chosen value, if the hint button is selected.
+// ------------------------------------------------------------------------------------------
 var checkMyTemp = function(myGuess, compGuess) {
 	var myTemperature = 0;
 
@@ -32,20 +62,22 @@ var checkMyTemp = function(myGuess, compGuess) {
 			document.getElementById("myTemp").innerHTML = "You're on Fire";
 	}
 }
-
-var myHintFunc = function() {
-	if(document.getElementById("myHint").style.display == "none"){
-		document.getElementById("myHint").style.display = "block";
-		if (myLives > 5) {
-			myLives = 5;
-			document.getElementById("myLives").innerHTML = myLives;
-		}	
-	} else {
-		document.getElementById("myHint").style.display = "none";
-	}
-}
+// ------------------------------------------------------------------------------------------
+// ==========================================================================================
 
 
+// ==========================================================================================
+// "Key Clicker Event"
+// Summary: each key that is clicked is checked against a list of conditions, which are as
+//   follows:
+//   1. Checks if the user input is a value within the alphabet "a-z" and if the input hasn't
+//      already been clicked
+//   2. Checks if the user input is the randomly chosen value, if the initial condition is
+//      satisfied the win score increments and is diplayed, guess amount is reset.  If the
+//      condition is not satisfied, then the guess amount decrements and is displayed.
+//   3. Checks if the guess amount reaches zero (0), if this condition is satisified, then
+//      loss increments and guess amount resets.
+// ------------------------------------------------------------------------------------------
 document.onkeyup = function(event) {
 	
 	var userGuess = event.key;
@@ -55,12 +87,6 @@ document.onkeyup = function(event) {
 		tempStr += userGuess;
 		
 		checkMyTemp(userGuess, compSelect);
-		
-		if (tempStr.length < 2) {
-			displayTempStr += userGuess;
-		} else {
-			displayTempStr += ", " + userGuess;	
-		}
 		 
 		if (userGuess == compSelect) {
 			myWin++;
@@ -68,9 +94,8 @@ document.onkeyup = function(event) {
 			document.getElementById("myLosses").innerHTML = myLose;
 			myLives = 10;
 			document.getElementById("myLives").innerHTML = myLives;
-			document.getElementById("myGuesses").innerHTML = displayTempStr;
+			document.getElementById("myGuesses").innerHTML = tempStr.split("").join(", ");
 			tempStr="";
-			displayTempStr="";
 			document.getElementById("myHint").style.display = "none";
 			myRnd = Math.floor(Math.random()*myAlpha.length);
 			compSelect = myAlpha[myRnd];
@@ -78,7 +103,7 @@ document.onkeyup = function(event) {
 		} else {
 			myLives--;
 			document.getElementById("myLives").innerHTML = myLives;
-			document.getElementById("myGuesses").innerHTML = displayTempStr;
+			document.getElementById("myGuesses").innerHTML = tempStr.split("").join(", ");
 		}
 	}
 	
@@ -88,12 +113,13 @@ document.onkeyup = function(event) {
 		document.getElementById("myWins").innerHTML	= myWin;
 		myLives = 10;
 		document.getElementById("myLives").innerHTML = myLives;
-		document.getElementById("myGuesses").innerHTML = displayTempStr;
+		document.getElementById("myGuesses").innerHTML = tempStr.split("").join(", ");
 		tempStr="";
-		displayTempStr = "";
 		document.getElementById("myHint").style.display = "none";
 		myRnd = Math.floor(Math.random()*myAlpha.length);
 		compSelect = myAlpha[myRnd];
 		document.getElementById("myTemp").innerHTML = "";
 	}
 }
+// ------------------------------------------------------------------------------------------
+// ==========================================================================================
