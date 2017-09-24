@@ -94,9 +94,9 @@ document.onkeyup = function(event) {
 			document.getElementById("myGuesses").innerHTML = tempStr.split("").join(", ");
 			tempStr="";
 			document.getElementById("myHint").style.display = "none";
+			document.getElementById("myTemp").innerHTML = "";
 			myRnd = Math.floor(Math.random()*myAlpha.length);
 			compSelect = myAlpha[myRnd];
-			document.getElementById("myTemp").innerHTML = "";
 		} else {
 			myLives--;
 			document.getElementById("myGuesses").innerHTML = tempStr.split("").join(", ");
@@ -109,9 +109,9 @@ document.onkeyup = function(event) {
 		document.getElementById("myGuesses").innerHTML = tempStr.split("").join(", ");
 		tempStr="";
 		document.getElementById("myHint").style.display = "none";
+		document.getElementById("myTemp").innerHTML = "";
 		myRnd = Math.floor(Math.random()*myAlpha.length);
 		compSelect = myAlpha[myRnd];
-		document.getElementById("myTemp").innerHTML = "";
 	}
 
 	document.getElementById("myWins").innerHTML = myWin;
