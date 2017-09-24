@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="UTF-8" />
+		<title>The Psy Game</title>
+	</head>
+	
+	<body>
+		<h1>The Psychic Game</h1>
+		
+		<p>Guess what letter I'm thinking of</p>
+		
+		<p>Wins: <span id="myWins"></span></p>
+		
+		<p>Losses: <span id="myLosses"></span></p>
+		
+		<p>Guesses Left: <span id="myLives"></span></p>
+		
+		<p>Your Guesses so far: <span id="myGuesses"></span></p>
+		
+		<hr />
+		
+		<button type="button" onclick="myHintFunc()">Hint?</button>
+		
+		<p id="myHint" style="display:none;">Your temperature (distance from): <span id="myTemp"></span></p>
+
+		<script src="assets/javascript/game.js"></script>
+	</body>
+</html>
