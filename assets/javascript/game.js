@@ -97,6 +97,7 @@ document.onkeyup = function(event) {
 			document.getElementById("myTemp").innerHTML = "";
 			myRnd = Math.floor(Math.random()*myAlpha.length);
 			compSelect = myAlpha[myRnd];
+			alert("You Win!");
 		} else {
 			myLives--;
 			document.getElementById("myGuesses").innerHTML = tempStr.split("").join(", ");
@@ -112,6 +113,7 @@ document.onkeyup = function(event) {
 		document.getElementById("myTemp").innerHTML = "";
 		myRnd = Math.floor(Math.random()*myAlpha.length);
 		compSelect = myAlpha[myRnd];
+		alert("You Lose!");
 	}
 
 	document.getElementById("myWins").innerHTML = myWin;
