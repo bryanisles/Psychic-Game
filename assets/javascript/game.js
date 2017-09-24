@@ -29,7 +29,7 @@ var checkMyTemp = function(myGuess, compGuess) {
 			document.getElementById("myTemp").innerHTML = "You're Hot";
 			break;
 		default:
-			document.getElementById("myTemp").innerHTML = "You're at a 3rd Degree";
+			document.getElementById("myTemp").innerHTML = "You're on Fire";
 	}
 }
 
